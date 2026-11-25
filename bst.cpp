@@ -1,11 +1,11 @@
 #include "bst.h"
 
 void createTree(BinTree &root){
-    root = Nil;
+    root = nullptr;
 }
 
 bool isEmptyTree(BinTree root){
-    return root == Nil;
+    return root == nullptr;
 }
 
 bool lebihKecil(Infotype a, Infotype b){
@@ -25,19 +25,19 @@ Address createNode(Infotype x){
 
     N = new Node;
     N->info = x;
-    N->left = Nil;
-    N->right = Nil;
+    N->left = nullptr;
+    N->right = nullptr;
 
     return N;
 }
 
 void deallocate(Address &N){
     delete N;
-    N = Nil;
+    N = nullptr;
 }
 
 void insertBST(Infotype x, BinTree &N){
-    if (N == Nil) {
+    if (N == nullptr) {
         N = createNode(x);
     } else if (lebihKecil(x, N->info)) {
         insertBST(x, N->left);
@@ -51,7 +51,7 @@ void insertBST(Infotype x, BinTree &N){
 Address findNode(Infotype x, BinTree N){
     Address hasil;
 
-    if (N == Nil || sama(x, N->info)) {
+    if (N == nullptr || sama(x, N->info)) {
         hasil = N;
     } else if (lebihKecil(x, N->info)) {
         hasil = findNode(x, N->left);
@@ -65,7 +65,7 @@ Address findNode(Infotype x, BinTree N){
 Address findHarga(int harga, BinTree N){
     Address hasil;
 
-    if (N == Nil || N->info.harga == harga) {
+    if (N == nullptr || N->info.harga == harga) {
         hasil = N;
     } else if (harga < N->info.harga) {
         hasil = findHarga(harga, N->left);
@@ -81,8 +81,8 @@ Address findMin(BinTree root){
 
     min = root;
 
-    if (min != Nil) {
-        while (min->left != Nil) {
+    if (min != nullptr) {
+        while (min->left != nullptr) {
             min = min->left;
         }
     }
@@ -95,8 +95,8 @@ Address findMax(BinTree root){
 
     max = root;
 
-    if (max != Nil) {
-        while (max->right != Nil) {
+    if (max != nullptr) {
+        while (max->right != nullptr) {
             max = max->right;
         }
     }
@@ -107,19 +107,19 @@ Address findMax(BinTree root){
 BinTree deleteBST(BinTree root, Infotype x){
     Address temp;
 
-    if (root != Nil) {
+    if (root != nullptr) {
         if (lebihKecil(x, root->info)) {
             root->left = deleteBST(root->left, x);
         } else if (lebihBesar(x, root->info)) {
             root->right = deleteBST(root->right, x);
         } else {
-            if (root->left == Nil && root->right == Nil) {
+            if (root->left == nullptr && root->right == nullptr) {
                 deallocate(root);
-            } else if (root->right == Nil) {
+            } else if (root->right == nullptr) {
                 temp = root;
                 root = root->left;
                 deallocate(temp);
-            } else if (root->left == Nil) {
+            } else if (root->left == nullptr) {
                 temp = root;
                 root = root->right;
                 deallocate(temp);
@@ -143,7 +143,7 @@ void printInfo(Infotype x){
 }
 
 void preOrder(BinTree root){
-    if (root != Nil) {
+    if (root != nullptr) {
         printInfo(root->info);
         preOrder(root->left);
         preOrder(root->right);
@@ -151,7 +151,7 @@ void preOrder(BinTree root){
 }
 
 void inOrder(BinTree root){
-    if (root != Nil) {
+    if (root != nullptr) {
         inOrder(root->left);
         printInfo(root->info);
         inOrder(root->right);
@@ -159,7 +159,7 @@ void inOrder(BinTree root){
 }
 
 void postOrder(BinTree root){
-    if (root != Nil) {
+    if (root != nullptr) {
         postOrder(root->left);
         postOrder(root->right);
         printInfo(root->info);
@@ -167,7 +167,7 @@ void postOrder(BinTree root){
 }
 
 void cariRentangHarga(BinTree root, int hMin, int hMax, int &jumlah){
-    if (root != Nil) {
+    if (root != nullptr) {
         if (root->info.harga >= hMin) {
             cariRentangHarga(root->left, hMin, hMax, jumlah);
         }
@@ -186,7 +186,7 @@ void cariRentangHarga(BinTree root, int hMin, int hMax, int &jumlah){
 int hitungNode(BinTree root){
     int n;
 
-    if (root == Nil) {
+    if (root == nullptr) {
         n = 0;
     } else {
         n = 1 + hitungNode(root->left) + hitungNode(root->right);
@@ -198,7 +198,7 @@ int hitungNode(BinTree root){
 int tinggiTree(BinTree root){
     int kiri, kanan, t;
 
-    if (root == Nil) {
+    if (root == nullptr) {
         t = -1;
     } else {
         kiri = tinggiTree(root->left);
