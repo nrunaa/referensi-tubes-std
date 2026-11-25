@@ -49,8 +49,7 @@ void menu(){
     cout << "--- Fungsionalitas Khusus ---" << endl;
     cout << " 9. Cari produk dalam rentang harga (BST)" << endl;
     cout << "10. Tampilkan produk termurah & termahal" << endl;
-    cout << "11. Tampilkan toko dengan total nilai stok tertinggi" << endl;
-    cout << "12. Hapus semua produk stok 0 dari toko tertentu" << endl;
+    cout << "11. Hapus semua produk stok 0 dari toko tertentu" << endl;
     cout << " 0. Keluar" << endl;
     cout << "Pilih menu: ";
 }
@@ -125,7 +124,7 @@ int main(){
 
             T = findToko(L, id);
 
-            if (T == Nil) {
+            if (T == nullptr) {
                 cout << "Toko " << id << " tidak ditemukan." << endl;
             } else {
                 printToko(T);
@@ -138,7 +137,7 @@ int main(){
 
             P = findProdukMarketplace(L, kode, T);
 
-            if (P == Nil) {
+            if (P == nullptr) {
                 cout << "Produk " << kode << " tidak ditemukan." << endl;
             } else {
                 cout << "Dijual oleh: ";
@@ -182,9 +181,6 @@ int main(){
             tampilTermurahTermahal(root);
             break;
         case 11:
-            tampilTokoNilaiStokTertinggi(L);
-            break;
-        case 12:
             cout << "Masukkan ID toko: ";
             cin >> id;
 
