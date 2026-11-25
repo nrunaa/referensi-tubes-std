@@ -125,3 +125,29 @@ void tambahProduk(listToko &L, BinTree &root, string idToko, infotypeProduk X){
     }
 }
 
+void hapusProdukStokNol(){
+    adrToko T;
+    adrProduk P, Q;
+    int n;
+
+    T = findToko(listToko L, string idToko);
+
+    if (T == nullptr) {
+        cout<<"Toko " << idToko << "tidak ditemukan"<< endl;
+    } else {
+        P = (T->1Produk).first;
+        while (P != nullptr) {
+            Q = P-> next
+            if (P->info.stok == 0) {
+                cout<< " menghapus " << P->info.kode << " - " << P->info.nama<< endl;
+                root = deleteBST(root, buatIndeks(P, T));
+                lepasProduk(T->lProduk, P);
+                dealokasiProduk(P);
+                n++; 
+            }
+            P = Q;   
+        }
+        cout << n << " produk ber-stok 0 dihapus dari toko " << T->info.nama << "." << endl;
+    }
+}
+
