@@ -125,7 +125,7 @@ void tambahProduk(listToko &L, BinTree &root, string idToko, infotypeProduk X){
     }
 }
 
-void hapusProdukStokNol(){
+void hapusProdukStokNol(listToko &L, BinTree &root, string idToko){
     adrToko T;
     adrProduk P, Q;
     int n;
